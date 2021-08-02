@@ -23,7 +23,9 @@ Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
 const getNames = (arr) => {
-  return arr.map(element => element.name)
+  let a = arr.map(element => element.name)
+  let b = a.slice(0).reverse()
+  return b;
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -76,6 +78,8 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 
 const addBirthYearProperty = (obj, year) => {
   // Solution code here...
+  obj["yearBorn"] = year;
+  ///help from https://www.w3schools.com/js/js_object_properties.asp
 };
 
 /* ------------------------------------------------------------------------------------------------
