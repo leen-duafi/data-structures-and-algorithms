@@ -71,13 +71,16 @@ HR has asked you to change the data to make it easier to print so that it looks 
   'Ada Lovelace: 222-349-9842',
   'Alan Turing: 222-853-5933'
 ]
-
+ [
+      'Grace Hopper,222-303-5938: Ada Lovelace,222-349-9842: Alan Turing,222-853-5933'
+    ]
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
   let array = [];
-
-   array.push(Object.entries(obj).join(': '))
+  Object.entries(obj).forEach(element => { array.push(element.join(': ')) })
+  //  array.push(Object.entries(obj).join(': '))
+  //  console.log('leen',array)
   // Solution code here...
   return array
 };
@@ -135,7 +138,10 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  houses.push(Object.keys(arr))
+  arr.forEach(element => {
+    houses.push(element.house)
+  })
+  // houses.push(Object.keys(arr))
   // Solution code here...
   return houses;
 };
@@ -153,6 +159,7 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
+  
   // Solution code here...
 
 };
