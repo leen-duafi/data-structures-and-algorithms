@@ -9,10 +9,8 @@ Write a function named longestString that takes in an array of strings and retur
 const longestString = (arr) => {
   // Solution code here...
 
-  var max = arr[0].length;
-  arr.map(v => max = Math.max(max, v.length));
-  let result = arr.filter(v => v.length == max);
-  return indexOf(result);
+  return arr.map(result => result.length).indexOf(Math.max(...arr.map(result => result.length)))
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,6 +50,11 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  let array=[]
+  arr.map(num=>{
+    array.push(num.replace(/[\s\-()]/g,("")))
+  })
+  return array
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +85,7 @@ Write a function named allHappy that takes in an array of strings and returns a 
 const allHappy = (arr) => {
   // Solution code here...
   arr.filter(cont => {
-    if (cont.includes(':)')) {
+    if (cont.includes(':)') === true) {
       return true
     }
     else { return false }
