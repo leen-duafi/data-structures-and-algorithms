@@ -18,12 +18,13 @@ const screenForNames = (arr) => {
   // }
   let array = []
   for (let i = 0; i < arr.length; i++) {
-    let rgx = /[a-zA-Z]+/
-    if (arr[i].includes('Mr.') || arr[i].includes('Mrs.') || arr[i].includes('Ms.') || arr[i].includes('Dr.') && rgx.test(arr[0])) {
+    let rgx =/^((Mr||Mrs||Dr||Ms).\s)[A-Z]/
+    if (rgx.test(arr[i])) {
       array.push(arr[i])
     }
 
   }
+  console.log(array);
   return array
 
 }
@@ -119,14 +120,15 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
-      if (arr[i][j].mass > arr[0].mass){}
+      if (77 > arr[0].mass){return arr[i].name}
       
     }
-    b.join('-')
+    // b.join('-')
   }
-  return b
+  // return b
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -145,8 +147,9 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
-  let array = arr.sort((a, b) => a.price < b.price ? -1 : 1);
-  return array
+  let array = arr.sort((a, b) => a[property] < b[property] ? -1 : 1);
+  return array 
+
 };
 
 /* ------------------------------------------------------------------------------------------------
