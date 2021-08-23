@@ -9,13 +9,19 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 ------------------------------------------------------------------------------------------------ */
 
 const raisedToTheThird = (arr) => {
+  //   let array = [];
+  //   arr.forEach(element => {
+  //     array.push(element * element * element)
+  //   });
+  //   return array;
+  //   // Solution code here...
+  // };
   let array = [];
-  arr.forEach(element => {
-    array.push(element * element * element)
-  });
-  return array;
-  // Solution code here...
-};
+  arr.map(val => {
+    array.push(val * val * val)
+  })
+  return array
+}
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -23,7 +29,12 @@ Write a function named addOne that, given an array of numbers, uses map to retur
 ------------------------------------------------------------------------------------------------ */
 
 const addOne = (arr) => {
-  return arr.map(element=>element+1)
+  // return arr.map(element => element + 1)
+  let array = [];
+  arr.map(val => {
+    array.push(val + 1)
+  })
+  return array
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,8 +44,15 @@ Write a function named addQuestion that, given an array of strings, uses map to 
 ------------------------------------------------------------------------------------------------ */
 
 const addQuestion = (arr) => {
-  return arr.map(element=>element+"?")
+  return arr.map(element => element + "?")
 };
+// return arr.map(val=>{val +`?`})
+// let array=[];
+// arr.map(val=>{
+//   array.push (val +`?`)
+// })
+// return array 
+// }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -47,13 +65,12 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  let array=[];
+  let array = [];
   for (let i = 0; i < arr.length; i++) {
     array.push(Math.pow(2, arr[i]))
   }
-return array
+  return array
 }
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -61,12 +78,13 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  let array=[];
+  let array = [];
   arr.forEach(element => {
     array.push(Math.pow(2, element));
   });
-return array
+  return array
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -75,7 +93,7 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  return arr.map(element=>Math.pow(2, element))
+  return arr.map(element => Math.pow(2, element))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +108,14 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
+  let array = [];
+  arr.map(val => {
+    array.push(charCodeAt(val))
+  })
+  return array
+
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -103,6 +128,18 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = (arr) => {
+  let array = [];
+  arr.map(val => {
+    if (val % 2 == 0) {
+      array.push('even')
+    }
+    else if (val % 2 !== 0) {
+      array.push('odd')
+    }
+    else { array.push('N/A') }
+  })
+  console.log(array);
+  return array
   // Solution code here...
 };
 
@@ -263,29 +300,29 @@ describe('Testing challenge 6', () => {
 
 xdescribe('Testing challenge 7', () => {
   test('It should return an array containing the character code for each letter', () => {
-    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
+    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([67, 111, 100, 101, 51, 48, 49]);
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
   });
 });
 
 xdescribe('Testing challenge 8', () => {
   test('It should return an array containing the keys from an object', () => {
-    expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
+    expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual(['odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd']);
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
   });
 
   test('It should work with all odd numbers', () => {
-    expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual([ 'odd', 'odd', 'odd', 'odd', 'odd' ]);
+    expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual(['odd', 'odd', 'odd', 'odd', 'odd']);
     expect(evenOdd([1, 3, 5, 7, 9]).length).toStrictEqual(5);
   });
 
   test('It should work with all even numbers', () => {
-    expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual([ 'even', 'even', 'even', 'even', 'even' ]);
+    expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual(['even', 'even', 'even', 'even', 'even']);
     expect(evenOdd([2, 4, 6, 8, 10]).length).toStrictEqual(5);
   });
 
   test('It should return the string "N/A" if a non-number is included in the array', () => {
-    expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([ 'odd', 'even', 'even', 'N/A' ]);
+    expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual(['odd', 'even', 'even', 'N/A']);
     expect(evenOdd([5, 8, 2, 'hi']).length).toStrictEqual(4);
   });
 });
